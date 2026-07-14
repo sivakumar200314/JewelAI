@@ -1,0 +1,18 @@
+const mongoose = require("mongoose");
+
+const reviewSchema = new mongoose.Schema(
+{
+  userName: String,
+  productId: Number,
+  rating: Number,
+  comment: String,
+},
+{
+  timestamps: true,
+}
+);
+
+module.exports = mongoose.model(
+  "Review",
+  reviewSchema
+);
