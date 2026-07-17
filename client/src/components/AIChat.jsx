@@ -71,12 +71,12 @@ function AIChat({
         setTimeout(resolve, 800)
       );
 
-      const res = await axios.post(
-        "https://jewelai-backend-1.onrender.com",
-        {
-          message: currentMessage,
-        }
-      );
+     const res = await axios.post(
+  "https://jewelai-backend-1.onrender.com/api/ai/chat",
+  {
+    message: currentMessage,
+  }
+);
 
       setMessages((prev) => [
         ...prev,
@@ -166,16 +166,15 @@ const startListening = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "https://jewelai-backend-1.onrender.com",
-        formData,
-        {
-          headers: {
-            "Content-Type":
-              "multipart/form-data",
-          },
-        }
-      );
+     const res = await axios.post(
+  "https://jewelai-backend-1.onrender.com/api/ai/image-search",
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
 
       setMessages((prev) => [
         ...prev,
@@ -311,7 +310,7 @@ const startListening = () => {
                       >
 
                         <img
-                          src={`https://jewelai-backend-1.onrender.com${product.image}`}
+                          src={`https://jewelai-backend-1.onrender.com/uploads/products/${product.image}`}
                           alt={product.name}
                           className="w-full h-44 object-cover rounded-lg"
                         />
