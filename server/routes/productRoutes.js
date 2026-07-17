@@ -6,10 +6,12 @@ const upload = require("../middleware/upload");
 const {
   getSimilarProducts,
 } = require("../controllers/similarProductController");
-router.get(
-  "/similar/:id",
-  getSimilarProducts
-);  
+
+// ======================
+// SIMILAR PRODUCTS
+// ======================
+
+router.get("/similar/:id", getSimilarProducts);
 
 // ======================
 // GET ALL PRODUCTS
@@ -20,6 +22,8 @@ router.get("/", async (req, res) => {
     const products = await Product.find();
     res.json(products);
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       message: error.message,
     });
@@ -32,26 +36,33 @@ router.get("/", async (req, res) => {
 
 router.post("/add", upload.single("image"), async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({
+        message: "Please upload an image",
+      });
+    }
+
     const newProduct = new Product({
       name: req.body.name,
       category: req.body.category,
       description: req.body.description,
       price: req.body.price,
       stock: req.body.stock,
-
-      // Save uploaded filename
       image: req.file.filename,
     });
 
     await newProduct.save();
 
     res.status(201).json({
+      success: true,
       message: "Product Added Successfully",
       product: newProduct,
     });
-
   } catch (error) {
+    console.error("Add Product Error:", error);
+
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }
@@ -72,12 +83,15 @@ router.put("/:id", async (req, res) => {
     );
 
     res.json({
+      success: true,
       message: "Product Updated",
       product: updatedProduct,
     });
-
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }
@@ -89,15 +103,17 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-
     await Product.findByIdAndDelete(req.params.id);
 
     res.json({
+      success: true,
       message: "Product Deleted",
     });
-
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }

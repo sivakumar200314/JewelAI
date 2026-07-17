@@ -54,60 +54,45 @@ setProduct({
 [e.target.name]: e.target.value,
 });
 };
-
 const addProduct = async () => {
-try {
-const formData = new FormData();
+  try {
+    if (!image) {
+      alert("Please select an image");
+      return;
+    }
 
-formData.append("name", product.name);
-formData.append("category", product.category);
-formData.append("description", product.description);
-formData.append("price", product.price);
-formData.append("stock", product.stock);
+    const formData = new FormData();
 
-formData.append("image", image);
+    formData.append("name", product.name);
+    formData.append("category", product.category);
+    formData.append("description", product.description);
+    formData.append("price", product.price);
+    formData.append("stock", product.stock);
+    formData.append("image", image);
 
-await axios.post(
-  "https://jewelai-backend-1.onrender.com/api/products/add",
-  formData,
-  {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    const res = await axios.post(
+      "https://jewelai-backend-1.onrender.com/api/products/add",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    alert(res.data.message);
+
+    fetchProducts();
+
+  } catch (error) {
+    console.error(error);
+
+    if (error.response) {
+      alert(error.response.data.message);
+    } else {
+      alert(error.message);
+    }
   }
-);
-
-
-  alert("Product Added");
-setProduct({
-  name: "",
-  category: "",
-  subCategory: "",
-  brand: "JewelAI",
-  description: "",
-  price: "",
-  originalPrice: "",
-  discount: 0,
-  stock: 20,
-  image: "",
-  weight: "",
-  purity: "22K",
-  material: "Gold",
-  gender: "Women",
-  occasion: "Daily Wear",
-  rating: 4.5,
-  reviews: 0,
-  featured: false,
-  newArrival: false,
-  bestseller: false,
-});
-  fetchProducts();
-
-} catch (error) {
-  console.log(error);
-}
-
-
 };
 
 const deleteProduct = async (id) => {
