@@ -197,11 +197,12 @@ function Home({
               {/* IMAGE */}
 
               <img
-  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com${item.image}`}
   alt={item.name}
   className="w-full h-[350px] object-cover"
   onError={(e) => {
-    console.log("Image not found:", item.image);
+    console.log(item.image);
+    e.target.src = "/no-image.png";
   }}
 />
 
