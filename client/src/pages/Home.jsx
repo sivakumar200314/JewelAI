@@ -72,6 +72,8 @@ function Home({
   const filteredProducts = products.filter(
   (item) => {
 
+    console.log(item.image);
+
     const categoryMatch =
       selectedCategory === "All" ||
       item.category === selectedCategory;
@@ -249,7 +251,7 @@ function Home({
                   Add to Cart
                 </button>
                 <button
-                  onClick={() => addReview(item.id)}
+                  onClick={() => addReview(item._id)}
                   className="bg-yellow-500 text-black px-6 py-4 rounded-2xl w-full text-2xl mt-3"
                   >
                    Add Review

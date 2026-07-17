@@ -37,9 +37,7 @@ const  [product, setProduct] = useState({
 }); 
  const fetchProducts = async () => {
 try {
-const res = await axios.get(
-"http://localhost:5000/api/products"
-);
+const res = await axios.get("https://jewelai-backend-1.onrender.com/api/products");
 
 
   setProducts(res.data);
@@ -70,7 +68,7 @@ formData.append("stock", product.stock);
 formData.append("image", image);
 
 await axios.post(
-  "http://localhost:5000/api/products/add",
+  "https://jewelai-backend-1.onrender.com/api/products/add",
   formData,
   {
     headers: {
@@ -124,10 +122,9 @@ const deleteProduct = async (id) => {
 
   try {
 
-    await axios.delete(
-      `http://localhost:5000/api/products/${id}`
-    );
-
+   await axios.delete(
+  `https://jewelai-backend-1.onrender.com/api/products/${id}`
+);
     alert("Product Deleted Successfully!");
 
     fetchProducts();
