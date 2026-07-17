@@ -212,7 +212,7 @@ function Home({
               {/* IMAGE */}
 
               <img
-  src={`https://jewelai-backend-1.onrender.com${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
   alt={item.name}
   className="w-full h-[350px] object-cover"
   onError={(e) => {
