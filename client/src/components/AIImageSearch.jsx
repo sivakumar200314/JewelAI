@@ -78,11 +78,10 @@ function AIImageSearch() {
           >
 
             <img
-              src={`https://jewelai-backend-1.onrender.com${product.image}`}
-              className="img-fluid"
-              alt={item.name}
-            />
-
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
+  className="img-fluid"
+  alt={item.name}
+/>
             <h5>{item.name}</h5>
 
             <p>₹{item.price}</p>
