@@ -90,6 +90,7 @@ function Home({
   }
 );
 
+
   return (
 
     <div className="bg-black min-h-screen text-white">
@@ -113,13 +114,25 @@ function Home({
       <div className="flex gap-5 justify-center py-10 flex-wrap px-5">
 
         {[
-          "All",
-          "Rings",
-          "Earrings",
-          "Necklaces",
-          "Bracelets",
-          "Watches",
-        ].map((category) => (
+  "All",
+  "Gold Rings",
+  "Diamond Rings",
+  "Watches",
+  "Necklaces",
+  "Chains",
+  "Bracelets",
+  "Bangles",
+  "Earrings",
+  "Pendants",
+  "Mangalsutras",
+  "Nose Pins",
+  "Anklets",
+  "Bridal Collection",
+  "Men",
+  "Kids",
+  "Silver",
+  "Coins",
+].map((category) => (
 
           <button
             key={category}
