@@ -12,7 +12,7 @@ function Register() {
   const registerUser = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://jewelai-backend-1.onrender.com/api/auth/register",
         {
           name,
           email,

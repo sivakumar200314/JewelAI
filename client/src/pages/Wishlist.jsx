@@ -34,7 +34,7 @@ function Wishlist({ wishlist, setWishlist, cart, setCart }) {
             >
 
              <img
-  src={`http://localhost:5000/uploads/products/${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
   alt={item.name}
   className="w-full h-72 object-cover"
 />

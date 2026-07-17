@@ -319,7 +319,7 @@ return ( <div className="min-h-screen bg-slate-950 text-white p-10">
       >
 
        <img
-  src={`http://localhost:5000/uploads/products/${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
   alt={item.name}
   className="w-full h-52 object-cover rounded-xl"
 />

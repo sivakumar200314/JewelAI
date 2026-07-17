@@ -72,7 +72,7 @@ function AIChat({
       );
 
       const res = await axios.post(
-        "http://localhost:5000/api/ai/chat",
+        "https://jewelai-backend-1.onrender.com",
         {
           message: currentMessage,
         }
@@ -167,7 +167,7 @@ const startListening = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/ai/image-search",
+        "https://jewelai-backend-1.onrender.com",
         formData,
         {
           headers: {
@@ -311,7 +311,7 @@ const startListening = () => {
                       >
 
                         <img
-                          src={`http://localhost:5000/uploads/products/${product.image}`}
+                          src={`https://jewelai-backend-1.onrender.com${product.image}`}
                           alt={product.name}
                           className="w-full h-44 object-cover rounded-lg"
                         />

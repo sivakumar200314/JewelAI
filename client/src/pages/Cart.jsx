@@ -48,7 +48,7 @@ try {
 
   for (const item of cart) {
     await axios.post(
-      "http://localhost:5000/api/orders/add",
+      "https://jewelai-backend-1.onrender.com/api/orders/add",
       {
         userEmail: userEmail,
         productName: item.name,
@@ -92,7 +92,7 @@ return ( <div className="p-10 bg-black min-h-screen text-white">
             className="bg-white text-black rounded-3xl p-5 flex gap-5"
           >
            <img
-  src={`http://localhost:5000/uploads/products/${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
   alt={item.name}
   className="w-40 h-40 object-cover rounded-2xl"
 />

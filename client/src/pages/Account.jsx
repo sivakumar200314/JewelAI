@@ -16,7 +16,7 @@ localStorage.getItem("userEmail") || "No Email";
 useEffect(() => {
 axios
 .get(
-`http://localhost:5000/api/orders/${email}`
+`https://jewelai-backend-1.onrender.com${product.image}`
 )
 .then((res) => {
 setOrders(res.data);

@@ -17,7 +17,7 @@ function AIImageSearch() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/ai/image-search",
+        "https://jewelai-backend-1.onrender.com/api/ai/image-search",
         formData,
         {
           headers: {
@@ -78,7 +78,7 @@ function AIImageSearch() {
           >
 
             <img
-              src={`http://localhost:5000${item.image}`}
+              src={`https://jewelai-backend-1.onrender.com${product.image}`}
               className="img-fluid"
               alt={item.name}
             />

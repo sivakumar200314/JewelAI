@@ -16,7 +16,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://jewelai-backend-1.onrender.com/api/auth/login",
         {
           email,
           password,

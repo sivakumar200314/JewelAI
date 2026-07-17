@@ -18,7 +18,7 @@ function Home({
        const [products, setProducts] = useState([]);
         useEffect(() => {
   axios
-    .get("http://localhost:5000/api/products")
+    .get("https://jewelai-backend-1.onrender.com/api/products")
     .then((res) => {
       setProducts(res.data);
       console.log(res.data);
@@ -46,7 +46,7 @@ function Home({
   try {
 
     await axios.post(
-      "http://localhost:5000/api/reviews/add",
+      "https://jewelai-backend-1.onrender.com/api/reviews/add",
       {
         userName:
           localStorage.getItem("userName") ||
@@ -197,7 +197,7 @@ function Home({
               {/* IMAGE */}
 
               <img
-  src={`http://localhost:5000/uploads/products/${item.image}`}
+  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
   alt={item.name}
   className="w-full h-[350px] object-cover"
   onError={(e) => {
