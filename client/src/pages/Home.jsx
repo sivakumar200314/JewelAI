@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaHeart, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function Home({
   cart,
@@ -18,7 +19,7 @@ function Home({
        const [products, setProducts] = useState([]);
         useEffect(() => {
   axios
-    .get("https://jewelai-backend-1.onrender.com/api/products")
+    .get(`${API_URL}/api/products`)
     .then((res) => {
       setProducts(res.data);
       console.log(res.data);
@@ -46,7 +47,7 @@ function Home({
   try {
 
     await axios.post(
-      "https://jewelai-backend-1.onrender.com/api/reviews/add",
+      `${API_URL}/api/reviews/add`,
       {
         userName:
           localStorage.getItem("userName") ||
@@ -211,12 +212,14 @@ function Home({
 
               {/* IMAGE */}
 
-              <img
-  src={`https://jewelai-backend-1.onrender.com/uploads/products/${item.image}`}
+            <img
+  src={`${API_URL}/uploads/products/${item.image}`}
   alt={item.name}
   className="w-full h-[350px] object-cover"
   onError={(e) => {
-    console.log(item.image);
+    if (e.target.dataset.fallback) return;
+    e.target.dataset.fallback = "true";
+    console.log("Image Error:", item.image);
     e.target.src = "/no-image.png";
   }}
 />
